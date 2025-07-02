@@ -7,7 +7,6 @@
     <link rel="preload" href="bg.jpg" as="image">
     <link rel="preload" href="bgmusic.mp3" as="audio">
     <style>
-        /* 保持原有样式不变 */
         * {
             margin: 0;
             padding: 0;
@@ -16,13 +15,9 @@
 
         body {
             font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #ffeef5 0%, #ffb3d9 100%);
+            background: url('bg.jpg') center/cover no-repeat fixed;
             overflow-x: hidden;
             transition: background 0.5s ease;
-        }
-
-        .has-bg body {
-            background: url('bg.jpg') center/cover no-repeat fixed, linear-gradient(135deg, #ffeef5 0%, #ffb3d9 100%) !important;
         }
 
         .hearts-container, .love-rain, .ribbons, .bubbles, .stars {
@@ -370,7 +365,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, #ffeef5 0%, #ffb3d9 100%);
+            background: rgba(255, 238, 245, 0.9);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -480,46 +475,36 @@
             const urlParams = new URLSearchParams(window.location.search);
             const uuid = urlParams.get('uuid');
             const mainContent = document.getElementById('mainContent');
-            console.log('Current Time:', now, 'Target Time:', target, 'UUID:', uuid);
+            const countdownDiv = document.getElementById('countdown');
 
             const isValidAccess = uuid === uuidRequired || now.getTime() >= target.getTime();
-            console.log('Is Valid Access:', isValidAccess);
 
-            if (isValidAccess) {
-                mainContent.classList.add('has-bg');
-                console.log('Added has-bg class');
-            }
-
-            const countdownDiv = document.getElementById('countdown');
             if (!isValidAccess) {
-                countdownDiv.innerHTML = `<div style="height:100vh;display:flex;justify-content:center;align-items:center;text-align:center;font-size:20px;color:#ff69b4;padding:20px;">🥺 抱歉，页面将于 <b>2025.11.22</b> 开启，仅限指定访客查看 🎁<br><br>请稍后再来或使用专属链接哦～</div>`;
+                countdownDiv.innerHTML = `<div style="height:100vh;display:flex;justify-content:center;align-items:center;text-align:center;font-size:20px;color:#ff69b4;padding:20px;">🥺 抱歉，页面将于 <b>2025.11.22</b> 开启，仅限指定访客查看 🎁<br><br>长按L有惊喜～</div>`;
                 return;
             }
 
             const remaining = target.getTime() - now.getTime();
             if (remaining > 0 && uuid !== uuidRequired) {
-                function updateCountdown() {
-                    const remaining = target.getTime() - new Date().getTime();
-                    if (remaining <= 0) {
+                countdownDiv.innerHTML = `<div style="height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;font-size:20px;color:#ff69b4;padding:20px;">
+                    🎂 距离生日惊喜还有：<br><br>
+                    <div style="font-size:32px;font-weight:bold;color:#dc143c;">${Math.floor(remaining / (1000 * 60 * 60 * 24))} 天 ${Math.floor((remaining / (1000 * 60 * 60)) % 24)} 小时 ${Math.floor((remaining / (1000 * 60)) % 60)} 分 ${Math.floor((remaining / 1000) % 60)} 秒</div><br>
+                    长按L有惊喜～
+                </div>`;
+                setInterval(() => {
+                    const newRemaining = target.getTime() - new Date().getTime();
+                    if (newRemaining <= 0) {
                         countdownDiv.style.display = 'none';
                         mainContent.style.display = 'block';
-                        mainContent.classList.add('has-bg');
-                        console.log('Countdown ended, added has-bg');
                         initializePage();
                         return;
                     }
-                    const days = Math.floor(remaining / (1000 * 60 * 60 * 24));
-                    const hours = Math.floor((remaining / (1000 * 60 * 60)) % 24);
-                    const minutes = Math.floor((remaining / (1000 * 60)) % 60);
-                    const seconds = Math.floor((remaining / 1000) % 60);
                     countdownDiv.innerHTML = `<div style="height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;font-size:20px;color:#ff69b4;padding:20px;">
                         🎂 距离生日惊喜还有：<br><br>
-                        <div style="font-size:32px;font-weight:bold;color:#dc143c;">${days} 天 ${hours} 小时 ${minutes} 分 ${seconds} 秒</div><br>
-                        🌸 记得在生日当天带上专属链接再回来哟 💖
+                        <div style="font-size:32px;font-weight:bold;color:#dc143c;">${Math.floor(newRemaining / (1000 * 60 * 60 * 24))} 天 ${Math.floor((newRemaining / (1000 * 60 * 60)) % 24)} 小时 ${Math.floor((newRemaining / (1000 * 60)) % 60)} 分 ${Math.floor((newRemaining / 1000) % 60)} 秒</div><br>
+                        长按L有惊喜～
                     </div>`;
-                }
-                updateCountdown();
-                setInterval(updateCountdown, 1000);
+                }, 1000);
                 return;
             }
 
@@ -529,8 +514,9 @@
         })();
 
         function initializePage() {
+            const loading = document.getElementById('loading');
             setTimeout(() => {
-                document.getElementById('loading').classList.add('hidden');
+                loading.classList.add('hidden');
             }, 2500);
             createHearts();
             createLoveRain();
