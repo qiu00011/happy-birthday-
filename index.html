@@ -15,9 +15,8 @@
 
         body {
             font-family: 'Arial', sans-serif;
-            background: url('bg.jpg') center/cover no-repeat fixed;
+            background: url('bg.jpg') center/cover no-repeat fixed, linear-gradient(135deg, #ffeef5 0%, #ffb3d9 100%);
             overflow-x: hidden;
-            transition: background 0.5s ease;
         }
 
         .hearts-container, .love-rain, .ribbons, .bubbles, .stars {
@@ -365,7 +364,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(255, 238, 245, 0.9);
+            background: linear-gradient(135deg, #ffeef5 0%, #ffb3d9 100%);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -390,7 +389,8 @@
     </style>
 </head>
 <body>
-    <div id="mainContent">
+    <div id="countdown"></div>
+    <div id="mainContent" style="display: none;">
         <div class="loading" id="loading">
             <div class="loading-content">
                 <div class="loading-text">💕 准备温馨的生日惊喜... 💕</div>
@@ -421,36 +421,39 @@
                     <div class="envelope-top"></div>
                     <div class="letter">
                         <div class="letter-content">
-                            <div class="letter-title">💌 致我最亲爱的阿欣 💌</div>
+                            <div class="letter-title">💌 致我最亲爱的朋友 💌</div>
                             <div class="letter-text">
                                 親愛的阿欣：<br><br>
-                                嗨！又到了一年一度的11月22日，今天是屬於妳的特別日子，我要先送上最真摯的祝福：生日快樂🎂！<br><br>
-                                這封信是我用心準備的，費了好一番心思才寫下來。不僅是為了祝賀妳的生日，更想趁這一刻，把這段時間以來對妳的情感細細訴說。裡面有對妳的感謝、思念、關懷，還有那些藏在心底、不好意思當面說出的小小情緒，全都一股腦兒寫了進去。<br><br>
-                                因為這是我第一次陪妳過生日，我希望能做點不一樣的事，留下一個屬於我們的小紀念。我不擅長甜言蜜語，也不是個浪漫的人，但這封信是我真心實意的禮物。希望有一天，當妳再次翻開它時，能露出溫暖的笑，輕聲說道：「原來有人曾這麼用心愛過我。」<br><br>
-                                阿欣，我真心感謝妳喜歡我，感謝妳走進我的世界，用妳獨特的方式溫暖我。我知道自己不完美，有時說話不夠溫柔，做事不夠細心，但妳總是默默包容我，用那份溫柔幫我扛下許多未說出口的壓力。因為有妳，我的生活多了一道光，照亮了許多暗角。<br><br>
-                                我也想讓妳知道，我是真的很喜歡妳，很愛妳。這份感情不是一時興起，也不是因為寂寞或新鮮，而是深植在我日常裡的溫暖。看到有趣的事想第一個告訴妳，聽到某首歌會想到妳的笑臉，甚至在妳不說話時，我也能感受到妳的情緒——這份默契是我從未對別人有的。我珍惜這種感覺，也珍惜有妳的每一天。<br><br>
-                                如果我能在妳身邊過這個生日，我會怎麼做呢？或許我們會去一家小餐廳，點上妳愛吃的菜，邊吃邊聊；或許我會準備一個小小的蛋糕，裡面藏著寫滿祝福的紙條；或許我們會漫步街頭，聊聊最近的心事，靜靜地享受彼此的陪伴。即便什麼都不說，簡單地走在一起，也會是美好的回憶。<br><br>
-                                可是現在，我們相隔兩地，我只能透過這封信把心意傳達給妳。雖然距離拉開了我們的身影，但我的心始終連繫著妳。想到妳現在在做什麼、吃了沒、睡得好不好，甚至是不是有人惹妳不高興，我都會默默祈禱，希望妳平安喜樂，希望這個世界對妳溫柔以待。<br><br>
-                                阿欣，妳是個特別的人。妳的氣質獨一無二，安靜卻不疏遠，溫柔卻有力量，堅強卻從不張揚。妳就像清晨第一縷陽光，柔和地灑進生活，給人安慰與依靠。妳給我的支持，讓我在迷失時找到方向，讓我在低谷時感到被理解。這樣的妳，是我生命中最珍貴的珍寶。<br><br>
-                                這一年，我知道妳經歷了不少挑戰。有時累了、有時煩了，有些心事藏在心裡不願說，甚至會質疑自己值不值得被愛。但我要告訴妳：妳很了不起。妳認真生活、努力成長，總是默默付出。即便偶爾疲憊，妳從未放棄，這份堅韌讓妳比誰都耀眼。<br><br>
-                                我希望妳能好好愛自己，不要再總把別人放第一。妳總是顧及他人，卻忘了自己也需要被疼愛。阿欣，妳也是人，會累、會痛、會想哭，妳有權利被寵愛、被照顧。所以，請從現在開始，對自己多一點溫柔，好嗎？無論我是否在身邊，妳都要學會珍重自己。<br><br>
-                                人生如旅，緣分聚散無常。我不知道未來我們會不會一直走在一起，也不知道會遇到什麼，但此刻，我願把全部真心給妳。珍惜現在的我們，珍惜這份情感。或許有一天，我們會走向不同的路，但在那之前，我會用心守護這段時光，深深記住妳。<br><br>
-                                我也希望妳記得我，偶爾想念我。或許在某個瞬間，看到熟悉的風景或聽到舊日的歌，能想起我，心裡輕輕說一句：「她曾這麼深愛過我。」這就夠了。<br><br>
-                                未來或許充滿挑戰，但我希望妳勇敢面對，因為妳不孤單。即使我不能常伴身邊，我的祝福永遠與妳同在。願妳平安健康，願妳每天笑顏如花，願妳身邊有愛，心裡有夢，眼裡有光。<br><br>
-                                最後，再次祝妳：生日快樂，阿欣！<br><br>
-                                願妳每一天醒來都是新的希望，每個夜晚都是安穩的港灣。願妳無懼過去，不慮未來，活出最真實最燦爛的自己。<br><br>
-                                謝謝妳讓我有機會這麼喜歡妳，這份緣分是我最大的幸運。<br><br>
+                                嗨～又是一年11月22日了，今天，是屬於妳的特別日子。先跟妳說聲最重要的：生日快樂🎂！<br><br>
+                                這封信，其實我準備了很久，因為我真的很想好好把心裡想說的話全部寫下來。不只是為了祝妳生日快樂，更是想在這個特別的時刻，把這一年來對妳的感謝、思念、關心，以及那些藏在日常裡的小情緒，都一一寫給妳。因為妳值得，妳值得這世界上最溫柔、最長情的祝福。<br><br>
+                                認識妳，是我生命裡最珍貴的意外之一。妳的出現，像是一段美麗又動人的旋律，在我心中留下了深深的餘韻。每次想到妳，就像春日午後的陽光照進心裡，有點溫暖、有點懷念，也有點不捨。妳說我是妳人生中的驚喜，但我總笑說，我也可能是驚嚇，妳總是笑得那麼開心，像這一切都值得被記得一輩子。<br><br>
+                                但我知道，我們無法永遠停留在這段時光裡。或許未來的人生，還有各自更重要的責任與方向，也許有更多的現實考量，讓我們無法像曾經那樣靠近。也許我們之間這段情誼，本來就是一場美麗但短暫的交會。比起牽掛，我更希望妳能學著放下，慢慢把心收回來一點，重新把重心放回自己的生活。<br><br>
+                                阿欣，這一年裡，我知道妳並不總是順利。有的時候妳會覺得很累，有時候會想逃避，有時甚至會懷疑自己是否真的能撐下去。但妳知道嗎？每次看到妳還是咬牙撐著、默默把該做的事完成的樣子，我都好心疼，也好佩服。因為我知道，那不是因為妳不累，而是因為妳真的很堅強。那種內心真正溫柔的人，才會擁有的堅強。<br><br>
+                                我真的很希望，妳不要再那麼委屈自己了。妳已經夠好了，真的。妳比很多人都還要努力、還要認真。妳總是顧慮別人的感受，為了不讓別人失望，常常犧牲自己。可是阿欣，妳也是人啊，妳也會累、會痛、會想哭。所以，以後請妳也多為自己想一點，好嗎？妳也值得被照顧、被疼愛、被溫柔以待。<br><br>
+                                有時候我會幻想，如果今天我在妳身邊，我會怎麼為妳慶生。也許是一起吃一頓簡單又好吃的晚餐，也許是送妳一束花，也許是我親手做的小蛋糕。然後我們可以在路邊慢慢散步，聊聊這一年來的故事，聽妳說那些藏在心裡卻無法對別人說的話。或者我們什麼都不說，只是並肩走著，也很好。<br><br>
+                                但現在，我只能隔著一片海，透過這封信，把這些畫面寫給妳看。妳在大陸，我在台灣，雖然距離遠了一點，但我的心，一直都在妳那邊。每當我想到妳現在在忙些什麼，有沒有好好吃飯、好好睡覺，我都會忍不住默默地為妳祈禱，希望妳一切都好、平安健康。<br><br>
+                                妳知道嗎？我一直覺得妳是一道光。不是那種耀眼刺眼的光，而是像黃昏時分斜斜照進房間的那種光，柔柔的、暖暖的、靜靜地陪著人。妳總是用自己的方式，默默地安慰別人、鼓勵別人，不誇耀、不張揚，卻讓人無法忽視。妳的存在，是那樣溫暖、踏實，讓人忍不住想靠近妳一點，再多了解妳一點。<br><br>
+                                我知道妳不喜歡成為焦點，總是習慣把別人放在前面，把自己放在最後。但在今天，在妳的生日這一天，我希望妳可以勇敢地把自己放在第一位。好好寵愛自己，好好放鬆一下。買一杯妳喜歡的奶茶，聽一首妳喜歡的歌，或者去一個妳想去的地方。不需要太多理由，因為今天是妳的日子。<br><br>
+                                阿欣，我真的希望妳能一直快快樂樂的。不是那種表面上的笑，而是那種從心底自然流露的開心。希望妳能有很多很多這樣的日子，累積成一個閃閃發亮的人生。<br><br>
+                                我也想告訴妳，未來不管遇到什麼，都別忘了自己有多棒。妳是值得被愛、被珍惜的。那些妳努力過、撐過來的日子，是妳最閃耀的勳章。就算沒有人發現，妳也要記得自己有多勇敢、多堅強。<br><br>
+                                我希望從今天開始，妳可以慢慢放下我，不要再那麼常常想念我了。我們曾經彼此喜歡，是一段真摯又美好的記憶，但它不該成為妳心裡永遠的牽絆。希望妳能把這份愛轉回自己身上，好好疼惜妳自己，好好愛自己。<br><br>
+                                有時候我們會懷疑自己，會問：「我這樣夠好嗎？」「我是不是不夠聰明、不夠漂亮、不夠特別？」但其實，那些都不是妳需要去迎合的標準。妳只要活成自己喜歡的樣子，就已經很棒了。這個世界上沒有第二個妳，妳本身就是無可取代的存在。<br><br>
+                                最後，我想跟妳說一個願望。這是我每年都會在妳生日這天偷偷許的願望——願妳一生平安、健康、快樂，身邊有人疼、心裡有夢想、眼裡有光。願妳不再為過去難過，也不為未來擔心。願妳不管在哪裡，都能做自己，愛自己。<br><br>
+                                阿欣，謝謝妳出現在我的世界裡。雖然我們的故事可能不像電影那樣轟轟烈烈，但卻是真實而溫暖的。未來的日子裡，我會一直在遠方默默祝福妳。<br><br>
+                                願我們都能成為更好的人，在各自的生活裡閃閃發光。有一天如果命運讓我們再相遇，希望我們都還記得彼此。<br><br>
+                                祝我最親愛的阿欣，生日快樂。<br><br>
+                                永遠祝福妳的<br>
                                 邱子怡<br>
                                 2025年11月22日
                             </div>
                             <div class="letter-text">
-                                🌸 愿你的生日如花般绚烂，愿所有美好围绕你！ 🌸
+                                🌸 愿你的生日充满欢笑与幸福，愿你实现每一个梦想！ 🌸
                             </div>
                             <div class="letter-text">
-                                🌺 感谢你带来的温暖，你的笑是我最美的风景！ 🌺
+                                🌺 感谢你一直以来的陪伴，你的笑容是我最大的动力！ 🌺
                             </div>
                             <div class="letter-text">
-                                🎀 愿你每一天阳光明媚，幸福常伴。生日快乐！🎂✨
+                                🎀 愿你的每一天都充满阳光与快乐，愿所有美好的事情都围绕在你身边。生日快乐！🎂✨
                             </div>
                             <div class="signature">
                                 💖 永远爱你的子怡<br>🌹 2025年11月22日 🌹
@@ -467,17 +470,56 @@
     <audio id="bgMusic" src="bgmusic.mp3" loop preload="auto"></audio>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            console.log('Page loaded, initializing...');
-            const loading = document.getElementById('loading');
-            setTimeout(() => {
-                loading.classList.add('hidden');
-                initializePage();
-            }, 2500);
-        });
+        (function() {
+            const uuidRequired = '74520';
+            const now = new Date();
+            const target = new Date('2025-11-22T00:00:00+08:00');
+            const urlParams = new URLSearchParams(window.location.search);
+            const uuid = urlParams.get('uuid');
+            const countdownDiv = document.getElementById('countdown');
+            const mainContent = document.getElementById('mainContent');
+
+            const isValidAccess = uuid === uuidRequired || now.getTime() >= target.getTime();
+
+            if (!isValidAccess) {
+                countdownDiv.innerHTML = `<div style="height:100vh;display:flex;justify-content:center;align-items:center;text-align:center;font-size:20px;color:#ff69b4;padding:20px;">🥺 抱歉，页面将于 <b>2025.11.22</b> 开启，仅限指定访客查看 🎁<br><br>请稍后再来或使用专属链接哦～</div>`;
+                return;
+            }
+
+            const remaining = target.getTime() - now.getTime();
+            if (remaining > 0 && uuid !== uuidRequired) {
+                function updateCountdown() {
+                    const remaining = target.getTime() - new Date().getTime();
+                    if (remaining <= 0) {
+                        countdownDiv.style.display = 'none';
+                        mainContent.style.display = 'block';
+                        initializePage();
+                        return;
+                    }
+                    const days = Math.floor(remaining / (1000 * 60 * 60 * 24));
+                    const hours = Math.floor((remaining / (1000 * 60 * 60)) % 24);
+                    const minutes = Math.floor((remaining / (1000 * 60)) % 60);
+                    const seconds = Math.floor((remaining / 1000) % 60);
+                    countdownDiv.innerHTML = `<div style="height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;font-size:20px;color:#ff69b4;padding:20px;">
+                        🎂 距离生日惊喜还有：<br><br>
+                        <div style="font-size:32px;font-weight:bold;color:#dc143c;">${days} 天 ${hours} 小时 ${minutes} 分 ${seconds} 秒</div><br>
+                        🌸 记得在生日当天带上专属链接再回来哟 💖
+                    </div>`;
+                }
+                updateCountdown();
+                setInterval(updateCountdown, 1000);
+                return;
+            }
+
+            countdownDiv.style.display = 'none';
+            mainContent.style.display = 'block';
+            initializePage();
+        })();
 
         function initializePage() {
-            console.log('Initializing page animations and interactions...');
+            setTimeout(() => {
+                document.getElementById('loading').classList.add('hidden');
+            }, 2500);
             createHearts();
             createLoveRain();
             createRibbons();
@@ -485,7 +527,6 @@
             createStars();
             initEnvelopeInteraction();
             initMusicControl();
-            document.getElementById('musicBtn').click(); // Auto-play music on load for testing
         }
 
         function createHearts() {
@@ -597,7 +638,7 @@
             heart.style.top = Math.random() * 100 + '%';
             heart.style.fontSize = (Math.random() * 20 + 20) + 'px';
             heart.style.zIndex = '1000';
-            heart.style.pointer-events = 'none';
+            heart.style.pointerEvents = 'none';
             heart.style.animation = 'heartFloat 3s ease-out forwards';
             document.body.appendChild(heart);
             setTimeout(() => { if (heart.parentNode) heart.parentNode.removeChild(heart); }, 3000);
@@ -641,7 +682,7 @@
             heart.style.top = y + 'px';
             heart.style.fontSize = '12px';
             heart.style.zIndex = '999';
-            heart.style.pointer-events = 'none';
+            heart.style.pointerEvents = 'none';
             heart.style.animation = 'mouseHeartFloat 1.5s ease-out forwards';
             document.body.appendChild(heart);
             setTimeout(() => { if (heart.parentNode) heart.parentNode.removeChild(heart); }, 1500);
