@@ -773,7 +773,7 @@ countdownDiv.innerHTML = `<div style="height:100vh;display:flex;flex-direction:c
                     createCelebration();
                 } else {
                     envelope.classList.remove('opened');
-                    openBtn.textContent = '什么？没看清，再看一遍🎂';
+                    openBtn.textContent = '什么？没看清，再看亿遍🎂';
                     isOpened = false;
                 }
             });
@@ -789,7 +789,7 @@ countdownDiv.innerHTML = `<div style="height:100vh;display:flex;flex-direction:c
 
         function createFloatingHeart() {
             const heart = document.createElement('div');
-            heart.textContent = ['💖', '💕', '唐', 'happy💗birthday', '欣', '💝', '💘'][Math.floor(Math.random() * 5)];
+            heart.textContent = ['💖', '💕', 'happy', '唐💗欣', 'birthday', '💝', '💘'][Math.floor(Math.random() * 5)];
             heart.style.position = 'fixed';
             heart.style.left = Math.random() * 100 + '%';
             heart.style.top = Math.random() * 100 + '%';
