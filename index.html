@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>生日快乐 - 11.22</title>
-    <link rel="preload" href="bg.jpg" as="image">
+    <link rel="preload" href="bg1.jpg" as="image">
+    <link rel="preload" href="bg2.jpg" as="image">
     <link rel="preload" href="bgmusic.mp3" as="audio">
     <style>
         * {
@@ -15,13 +16,13 @@
 
         body {
             font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #ffeef5 0%, #ffb3d9 100%);
+            background: url('bg1.jpg') center/cover no-repeat fixed, linear-gradient(135deg, #ffeef5 0%, #ffb3d9 100%);
             overflow-x: hidden;
             transition: background 0.5s ease;
         }
 
-        .has-bg body {
-            background: url('bg.jpg') center/cover no-repeat fixed, linear-gradient(135deg, #ffeef5 0%, #ffb3d9 100%);
+        .has-bg2 body {
+            background: url('bg2.jpg') center/cover no-repeat fixed, linear-gradient(135deg, #ffeef5 0%, #ffb3d9 100%);
         }
 
         .hearts-container, .love-rain, .ribbons, .bubbles, .stars {
@@ -395,7 +396,7 @@
 </head>
 <body>
     <div id="countdown"></div>
-    <div id="mainContent" style="display: none;" class="">
+    <div id="mainContent" style="display: none;">
         <div class="loading" id="loading">
             <div class="loading-content">
                 <div class="loading-text">💕 准备温馨的生日惊喜... 💕</div>
@@ -486,7 +487,7 @@
             const isValidAccess = uuid === uuidRequired || now.getTime() >= target.getTime();
 
             if (isValidAccess) {
-                mainContent.classList.add('has-bg');
+                mainContent.classList.add('has-bg2');
             }
 
             const countdownDiv = document.getElementById('countdown');
@@ -502,7 +503,7 @@
                     if (remaining <= 0) {
                         countdownDiv.style.display = 'none';
                         mainContent.style.display = 'block';
-                        mainContent.classList.add('has-bg');
+                        mainContent.classList.add('has-bg2');
                         initializePage();
                         return;
                     }
