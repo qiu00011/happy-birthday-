@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>生日快乐 - 11.22</title>
+    <title>帶阿欣看不一樣的電影</title>
     <link rel="preload" href="bg.jpg" as="image">
     <link rel="preload" href="bgmusic.mp3" as="audio">
     <style>
@@ -393,7 +393,7 @@
     <div id="mainContent" style="display: none;">
         <div class="loading" id="loading">
             <div class="loading-content">
-                <div class="loading-text">💕 按L和M有驚喜🫶 💕</div>
+                <div class="loading-text">💕 早就想帶你一起看了，一直沒機會，今天不許拒絕，全部看完🫶 💕</div>
                 <div class="loading-hearts">💖 💝 💗 💖</div>
             </div>
         </div>
@@ -414,14 +414,14 @@
 
         <div class="container">
             <div class="envelope-container">
-                <div class="birthday-title">🎂 生日快乐 🎂</div>
+                <div class="birthday-title">㊙️都是我精挑細選的，你肯定愛看，不要外放哦🌚</div>
                 <div class="envelope" id="envelope">
                     <div class="envelope-decoration">💝</div>
                     <div class="envelope-body"></div>
                     <div class="envelope-top"></div>
                     <div class="letter">
                         <div class="letter-content">
-                            <div class="letter-title">🌚 致 唐欣 🌚</div>
+                            <div class="letter-title">🌚 致——唐欣 🌚</div>
                             <div class="letter-text">
 <div style="font-family:'KaiTi','楷体',serif; font-size:20px; color:#4a2b18; line-height:1.9; white-space:pre-wrap;">
 親愛的阿欣：<br>
@@ -610,7 +610,7 @@
                                 🌺 感谢你一直以来的陪伴，你的笑容是我最大的动力！ 🌺
                             </div>
                             <div class="letter-text">
-                                🎀 愿你的每一天都充满阳光与快乐，愿所有美好的事情都围绕在你身边。生日快乐！🎂✨
+                                🎀 长按 L 有惊喜哦！🎂✨
                             </div>
                             <div class="signature">
                                 💖 爱你的子怡<br>🌹 2025年11月22日 🌹
@@ -768,7 +768,7 @@ countdownDiv.innerHTML = `<div style="height:100vh;display:flex;flex-direction:c
             openBtn.addEventListener('click', function() {
                 if (!isOpened) {
                     envelope.classList.add('opened');
-                    openBtn.textContent = '人家害羞啦🌚别看了';
+                    openBtn.textContent = '人家害羞啦🫣别看了';
                     isOpened = true;
                     createCelebration();
                 } else {
@@ -878,12 +878,12 @@ countdownDiv.innerHTML = `<div style="height:100vh;display:flex;flex-direction:c
             musicBtn.addEventListener('click', function() {
                 if (!isPlaying) {
                     bgMusic.play().then(() => {
-                        musicBtn.textContent = '🎵 暂停音乐';
+                        musicBtn.textContent = '🔇';
                         isPlaying = true;
                     }).catch(e => console.log('音乐播放失败:', e));
                 } else {
                     bgMusic.pause();
-                    musicBtn.textContent = '🎵 播放音乐';
+                    musicBtn.textContent = '🔈';
                     isPlaying = false;
                 }
             });
@@ -894,11 +894,11 @@ countdownDiv.innerHTML = `<div style="height:100vh;display:flex;flex-direction:c
             const bgMusic = document.getElementById('bgMusic');
             if (bgMusic.paused) {
                 bgMusic.play().then(() => {
-                    musicBtn.textContent = '🎵 暂停音乐';
+                    musicBtn.textContent = '🔇';
                 }).catch(e => console.log('音乐播放失败:', e));
             } else {
                 bgMusic.pause();
-                musicBtn.textContent = '🎵 播放音乐';
+                musicBtn.textContent = '🔈';
             }
         }
     </script>
