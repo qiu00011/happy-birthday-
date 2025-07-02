@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>生日快乐 - 11.22</title>
-    <link rel="preload" href="bg1.jpg" as="image">
-    <link rel="preload" href="bg2.jpg" as="image">
+    <link rel="preload" href="bg.jpg" as="image">
     <link rel="preload" href="bgmusic.mp3" as="audio">
     <style>
         * {
@@ -16,13 +15,13 @@
 
         body {
             font-family: 'Arial', sans-serif;
-            background: url('bg1.jpg') center/cover no-repeat fixed, linear-gradient(135deg, #ffeef5 0%, #ffb3d9 100%);
+            background: linear-gradient(135deg, #ffeef5 0%, #ffb3d9 100%);
             overflow-x: hidden;
             transition: background 0.5s ease;
         }
 
-        .has-bg2 body {
-            background: url('bg2.jpg') center/cover no-repeat fixed, linear-gradient(135deg, #ffeef5 0%, #ffb3d9 100%) !important;
+        .has-bg body {
+            background: url('bg.jpg') center/cover no-repeat fixed, linear-gradient(135deg, #ffeef5 0%, #ffb3d9 100%);
         }
 
         .hearts-container, .love-rain, .ribbons, .bubbles, .stars {
@@ -396,7 +395,7 @@
 </head>
 <body>
     <div id="countdown"></div>
-    <div id="mainContent" style="display: none;">
+    <div id="mainContent" style="display: none;" class="">
         <div class="loading" id="loading">
             <div class="loading-content">
                 <div class="loading-text">💕 准备温馨的生日惊喜... 💕</div>
@@ -427,7 +426,7 @@
                     <div class="envelope-top"></div>
                     <div class="letter">
                         <div class="letter-content">
-                            <div class="letter-title">💌 致我最亲爱的朋友 💌</div>
+                            <div class="letter-title">💌 致我亲爱的lover 💌</div>
                             <div class="letter-text">
                                 親愛的阿欣：<br><br>
                                 嗨～又是一年11月22日了，今天，是屬於妳的特別日子。先跟妳說聲最重要的：生日快樂🎂！<br><br>
@@ -483,14 +482,11 @@
             const urlParams = new URLSearchParams(window.location.search);
             const uuid = urlParams.get('uuid');
             const mainContent = document.getElementById('mainContent');
-            console.log('Current Time:', now, 'Target Time:', target, 'UUID:', uuid);
 
             const isValidAccess = uuid === uuidRequired || now.getTime() >= target.getTime();
-            console.log('Is Valid Access:', isValidAccess);
 
             if (isValidAccess) {
-                mainContent.classList.add('has-bg2');
-                console.log('Added has-bg2 class');
+                mainContent.classList.add('has-bg');
             }
 
             const countdownDiv = document.getElementById('countdown');
@@ -506,8 +502,7 @@
                     if (remaining <= 0) {
                         countdownDiv.style.display = 'none';
                         mainContent.style.display = 'block';
-                        mainContent.classList.add('has-bg2');
-                        console.log('Countdown ended, added has-bg2');
+                        mainContent.classList.add('has-bg');
                         initializePage();
                         return;
                     }
@@ -653,7 +648,7 @@
             heart.style.top = Math.random() * 100 + '%';
             heart.style.fontSize = (Math.random() * 20 + 20) + 'px';
             heart.style.zIndex = '1000';
-            heart.style.pointer-events = 'none';
+            heart.style.pointerEvents = 'none';
             heart.style.animation = 'heartFloat 3s ease-out forwards';
             document.body.appendChild(heart);
             setTimeout(() => { if (heart.parentNode) heart.parentNode.removeChild(heart); }, 3000);
