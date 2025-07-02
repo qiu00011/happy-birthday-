@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生日快乐 - 11.22</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #ffeef5 0%, #ffb3d9 100%);
+            overflow-x: hidden;
+            background-color: #ffeef5;
+        }
+
+        .hearts-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .heart {
+            position: absolute;
+            color: #ff69b4;
+            font-size: 20px;
+            animation: heartFloat 8s infinite linear;
+            opacity: 0.8;
+        }
+
+        @keyframes heartFloat {
+            0% {
+                transform: translateY(100vh) rotate(0deg) scale(0.5);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg) scale(1.2);
+                opacity: 0;
+            }
+        }
+
+        .balloons {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+            animation: balloonFloat 4s ease-in-out infinite;
+        }
+
+        .balloon {
+            display: inline-block;
+            margin: 0 5px;
+            font-size: 30px;
+            animation: balloonBounce 2s ease-in-out infinite;
+        }
+
+        .balloon:nth-child(1) { animation-delay: 0s; }
+        .balloon:nth-child(2) { animation-delay: 0.2s; }
+        .balloon:nth-child(3) { animation-delay: 0.4s; }
+        .balloon:nth-child(4) { animation-delay: 0.6s; }
+        .balloon:nth-child(5) { animation-delay: 0.8s; }
+
+        @keyframes balloonFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes balloonBounce {
+            0%, 100% { transform: scale(1) rotate(-2deg); }
+            50% { transform: scale(1.1) rotate(2deg); }
+        }
+
+        .balloons-right {
+            position: fixed;
+            top: 20px;
+            right: 100px;
+            z-index: 100;
+            animation: balloonFloat 3s ease-in-out infinite reverse;
+        }
+
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .star {
+            position: absolute;
+            color: #ffd700;
+            font-size: 16px;
+            animation: starTwinkle 3s ease-in-out infinite;
+        }
+
+        @keyframes starTwinkle {
+            0%, 100% { opacity: 0.3; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        .container {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            z-index: 2;
+        }
+
+        .upload-control {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            z-index: 1000;
+            background: linear-gradient(145deg, #ffb3d9, #ff80bf);
+            border-radius: 10px;
+            padding: 15px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 8px 25px rgba(255, 105, 180, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .upload-control:hover {
+            transform: scale(1.05);
+        }
+
+        .upload-btn {
+            background: linear-gradient(45deg, #ff69b4, #ff1493);
+            border: none;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 12px;
+            margin: 5px 0;
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+
+        .upload-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(255, 20, 147, 0.4);
+        }
+
+        .music-btn {
+            background: linear-gradient(45deg, #ff69b4, #ff1493);
+            border: none;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 12px;
+            margin: 5px 0;
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+
+        .music-btn:hover {
+            transform: translateY(-2px);
+            box-shadow:DOMException 0 4px 10px rgba(255, 20, 147, 0.4);
+        }
+
+        .envelope-container {
+            perspective: 1000px;
+            width: 420px;
+            height: 320px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .envelope {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: all 0.8s ease;
+            filter: drop-shadow(0 15px 30px rgba(255, 105, 180, 0.3));
+        }
+
+        .envelope.opened .envelope-top {
+            transform: rotateX(-180deg);
+        }
+
+        .envelope-body {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #ffeef5 0%, #ffe:DOMException
+            e0eb 50%, #ffd6e8 100%);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(255, 105, 180, 0.2);
+            border: 3px solid #ffb3d9;
+        }
+
+        .envelope-top {
+            position: absolute;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(135deg, #ffb3d9 0%, #ff80bf 50%, #ff4da6 100%);
+            border-radius: 12px 12px 0 0;
+            transform-origin: bottom;
+            transition: all 1s ease;
+            z-index: 10;
+            border: 3px solid #ff69b4;
+            border-bottom: none;
+        }
+
+        .envelope-top::before {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border左侧: 210px solid transparent;
+            border右侧: 210px solid transparent;
+            border-top: 100px solid #ff4da6;
+        }
+
+        .envelope-decoration {
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 30px;
+            z-index: 15;
+            animation: decorationPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes decorationPulse {
+            0%, 100% { transform: translateX(-50%) scale(1); }
+            50% { transform: translateX(-50%) scale(1.2); }
+        }
+
+        .letter {
+            position: absolute;
+            width: 90%;
+            height: 85%;
+            background: linear-gradient(145deg, #fffbfc 0%, #fff5f8 100%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) translateY(20px);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 8px 30px rgba(255, 105, 180, 0.2);
+            opacity: 0;
+            transition: all 1s ease;
+            z-index: 5;
+            border: 2px solid #ffe0eb;
+        }
+
+        .envelope.opened .letter {
+            opacity: 1;
+            transform: translate(-50%, -50%) translateY(0);
+        }
+
+        .letter-content {
+            height: 100%;
+            overflow-y: auto;
+            color: #8b4a6b;
+            line-height: 1.8;
+            font-size: 16px;
+        }
+
+        .letter-title {
+            text-align: center;
+            font-size: 26px;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ff69b4, #ff1493, #dc143c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 4px rgba(255, 105, 180, 0.3);
+        }
+
+        .letter-text {
+            margin-bottom: 15px;
+            text-indent: 2em;
+            background: rgba(255, 240, 245, 0.8);
+            padding: 12px;
+            border-radius: 8px;
+            border-left: 4px solid #ff69b4;
+            box-shadow: 0 2px 8px rgba(255, 105, 180, 0.1);
+        }
+
+        .signature {
+            text-align: right;
+            margin-top: 30px;
+            font-style: italic;
+            color: #ff1493;
+            font-weight: bold;
+            background: rgba(255, 182, 193, 0.2);
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        .open-btn {
+            position: absolute;
+            bottom: -80px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(45deg, #ff69b4, #ff1493, #dc143c);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(255, 20, 147, 0.4);
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+
+        .open-btn:hover {
+            transform: translateX(-50%) translateY(-5px) scale(1.1);
+            box-shadow: 0 12px 30 ri
+            rgba(255, 20, 147, 0.6);
+        }
+
+        .open-btn.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .birthday-title {
+            position: absolute;
+            top: -120px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 48px;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ff69b4, #ff1493, #dc143c, #ffd700);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 3s ease-in-out infinite;
+            text-shadow: 0 4px 8px rgba(255, 105, 180, 0.3);
+            z-index: 100;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .date-decoration {
+            position: absolute;
+            bottom: -150px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 24px;
+            color: #fff;
+            background: linear-gradient(145deg, #ff69b4, #ff1493);
+            padding: 12px 25px;
+            border-radius: 30px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 8px 25px rgba(255, 20, 147, 0.4);
+        }
+
+        .love-rain {
+            position:  fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .love-drop {
+            position: absolute;
+            font-size: 24px;
+            color: #ff69b4;
+            animation: loveRain 6s linear infinite;
+        }
+
+        @keyframes loveRain {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .ribbons {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .ribbon {
+            position: absolute;
+            width: 6px;
+            height: 80px;
+            background: linear-gradient(45deg, #ff69b4, #ffd700, #ff1493, #00bfff);
+            animation: ribbonFall 5s linear infinite;
+        }
+
+        @keyframes ribbonFall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        .bubbles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .bubble {
+            position: absolute;
+            background: radial-gradient(circle, rgba(255, 182, 193, 0.6), rgba(255, 105, 180, 0.3));
+            border-radius: 50%;
+            animation: bubbleFloat 8s infinite linear;
+        }
+
+        @keyframes bubbleFloat {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-100px) scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .envelope-container {
+                width: 320px;
+                height: 240px;
+            }
+            
+            .birthday-title {
+                font-size: 32px;
+                top: -100px;
+            }
+            
+            .letter {
+                padding: 20px;
+            }
+            
+            .letter-content {
+                font-size: 14px;
+            }
+            
+            .balloons, .balloons-right {
+                font-size: 20px;
+            }
+        }
+
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #ffeef5 0%, #ffb3d9 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            transition: opacity 0.5s ease;
+        }
+
+        .loading-content {
+            text-align: center;
+            color: #ff1493;
+        }
+
+        .loading-text {
+            font-size: 24px;
+            font-weight: bold;
+            animation: pulse 2s infinite;
+            margin-bottom: 20px;
+        }
+
+        .loading-hearts {
+            font-size: 30px;
+            animation: heartBeat 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+
+        @keyframes heartBeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+        }
+
+        .loading.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="countdown"></div>
+    <div id="mainContent" style="display: none;">
+        <div class="loading" id="loading">
+            <div class="loading-content">
+                <div class="loading-text">💕 准备温馨的生日惊喜... 💕</div>
+                <div class="loading-hearts">💖 💝 💗 💖</div>
+            </div>
+        </div>
+
+        <div class="hearts-container" id="heartsContainer"></div>
+        <div class="love-rain" id="loveRain"></div>
+        <div class="ribbons" id="ribbons"></div>
+        <div class="bubbles" id="bubbles"></div>
+        <div class="stars" id="stars"></div>
+
+        <div class="balloons">
+            <span class="balloon">🎈</span>
+            <span class="balloon">🎀</span>
+            <span class="balloon">🎈</span>
+            <span class="balloon">🎂</span>
+            <span class="balloon">🎈</span>
+        </div>
+
+        <div class="balloons balloons-right">
+            <span class="balloon">💕</span>
+            <span class="balloon">🎈</span>
+            <span class="balloon">💖</span>
+            <span class="balloon">🎈</span>
+        </div>
+
+        <div class="upload-control">
+            <input type="file" id="bgImageInput" accept="image/jpeg" style="display: none;">
+            <button class="upload-btn" onclick="document.getElementById('bgImageInput').click()">上传背景图片</button>
+            <input type="file" id="bgMusicInput" accept="audio/mpeg" style="display: none;">
+            <button class="upload-btn" onclick="document.getElementById('bgMusicInput').click()">上传背景音乐</button>
+            <button class="music-btn" id="musicBtn" style="display: none;">🎵 播放音乐</button>
+            <audio id="bgMusic" loop preload="auto"></audio>
+        </div>
+
+        <div class="container">
+            <div class="envelope-container">
+                <div class="birthday-title">🎂 生日快乐 🎂</div>
+                <div class="envelope" id="envelope">
+                    <div class="envelope-decoration">💝</div>
+                    <div class="envelope-body"></div>
+                    <div class="envelope-top"></div>
+                    <div class="letter">
+                        <div class="letter-content">
+                            <div class="letter-title">💌 致我最亲爱的朋友 💌</div>
+                            <div class="letter-text">
+                                💕 亲爱的朋友，在这个特别而美好的日子里，我想对你说...
+                            </div>
+                            <div class="letter-text">
+                                🌸 愿你的生日充满欢笑与幸福，愿你实现每一个梦想！ 🌸
+                            </div>
+                            <div class="letter-text">
+                                🌺 感谢你一直以来的陪伴，你的笑容是我最大的动力！ 🌺
+                            </div>
+                            <div class="letter-text">
+                                🎀 愿你的每一天都充满阳光与快乐，愿所有美好的事情都围绕在你身边。生日快乐，我最珍贵的朋友！🎂✨
+                            </div>
+                            <div class="signature">
+                                💖 永远爱你的朋友<br>
+                                🌹 2025年11月22日 🌹
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="open-btn" id="openBtn">💝 打开爱的惊喜</button>
+                <div class="date-decoration">
+                    🎂 2025.11.22 🎂
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function () {
+            const uuidRequired = '74520';
+            const now = new Date();
+            const target = new Date('2025-11-22T00:00:00+08:00');
+            const urlParams = new URLSearchParams(window.location.search);
+            const uuid = urlParams.get('uuid');
+            const countdownDiv = document.getElementById('countdown');
+            const mainContent = document.getElementById('mainContent');
+
+            const isValidAccess = uuid === uuidRequired || now.getTime() >= target.getTime();
+
+            if (!isValidAccess) {
+                countdownDiv.innerHTML = `<div style="height:100vh;display:flex;justify-content:center;align-items:center;text-align:center;font-size:20px;color:#ff69b4;padding:20px;">🥺 抱歉，页面将于 <b>2025.11.22</b> 开启，仅限指定访客查看 🎁<br><br>请稍后再来或使用专属链接哦～</div>`;
+                return;
+            }
+
+            const remaining = target.getTime() - now.getTime();
+            if (remaining > 0 && uuid !== uuidRequired) {
+                function updateCountdown() {
+                    const remaining = target.getTime() - new Date().getTime();
+                    if (remaining <= 0) {
+                        countdownDiv.style.display = 'none';
+                        mainContent.style.display = 'block';
+                        initializePage();
+                        return;
+                    }
+                    const days = Math.floor(remaining / (1000 * 60 * 60 * 24));
+                    const hours = Math.floor((remaining / (1000 * 60 * 60)) % 24);
+                    const minutes = Math.floor((remaining / (1000 * 60)) % 60);
+                    const seconds = Math.floor((remaining / 1000) % 60);
+                    countdownDiv.innerHTML = `<div style="height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;font-size:20px;color:#ff69b4;padding:20px;">
+                        🎂 距离生日惊喜还有：<br><br>
+                        <div style="font-size:32px;font-weight:bold;color:#dc143c;">${days} 天 ${hours} 小时 ${minutes} 分 ${seconds} 秒</div><br>
+                        🌸 记得在生日当天带上专属链接再回来哟 💖
+                    </div>`;
+                }
+                updateCountdown();
+                setInterval(updateCountdown, 1000);
+                return;
+            }
+
+            countdownDiv.style.display = 'none';
+            mainContent.style.display = 'block';
+            initializePage();
+        })();
+
+        function initializePage() {
+            setTimeout(() => {
+                document.getElementById('loading').classList.add('hidden');
+            }, 2500);
+            createHearts();
+            createLoveRain();
+            createRibbons();
+            createBubbles();
+            createStars();
+            initEnvelopeInteraction();
+            initFileUploads();
+            initMusicControl();
+        }
+
+        function initFileUploads() {
+            const bgImageInput = document.getElementById('bgImageInput');
+            bgImageInput.addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (file && file.type === 'image/jpeg') {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        document.body.style.background = `url(${e.target.result}) center/cover no-repeat fixed`;
+                        document.body.style.backgroundColor = '#ffeef5';
+                    };
+                    reader.readAsDataURL(file);
+                } else {
+                    alert('请上传有效的 JPG 图片！');
+                }
+            });
+
+            const bgMusicInput = document.getElementById('bgMusicInput');
+            bgMusicInput.addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (file && file.type === 'audio/mpeg') {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        const bgMusic = document.getElementById('bgMusic');
+                        bgMusic.src = e.target.result;
+                        document.getElementById('musicBtn').style.display = 'block';
+                    };
+                    reader.readAsDataURL(file);
+                } else {
+                    alert('请上传有效的 MP3 音频文件！');
+                }
+            });
+        }
+
+        function initMusicControl() {
+            const musicBtn = document.getElementById('musicBtn');
+            const bgMusic = document.getElementById('bgMusic');
+            let isPlaying = false;
+            musicBtn.addEventListener('click', function() {
+                if (isPlaying) {
+                    bgMusic.pause();
+                    musicBtn.textContent = '🎵 播放音乐';
+                    isPlaying = false;
+                } else {
+                    bgMusic.play().catch(e => {
+                        console.log('音乐播放失败:', e);
+                        alert('音乐播放失败，请检查音频文件！');
+                    });
+                    musicBtn.textContent = '⏸️ 暂停音乐';
+                    isPlaying = true;
+                }
+            });
+            bgMusic.addEventListener('ended', function() {
+                musicBtn.textContent = '🎵 播放音乐';
+                isPlaying = false;
+            });
+        }
+
+        function createHearts() {
+            const heartsContainer = document.getElementById('heartsContainer');
+            const heartSymbols = ['💖', '💕', '💗', '💝', '💘', '💙', '💜', '🧡', '💛', '💚'];
+            setInterval(() => {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.textContent = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.animationDelay = Math.random() * 2 + 's';
+                heart.style.animationDuration = (Math.random() * 3 + 5) + 's';
+                heart.style.fontSize = (Math.random() * 10 + 15) + 'px';
+                heartsContainer.appendChild(heart);
+                setTimeout(() => {
+                    if (heart.parentNode) {
+                        heart.parentNode.removeChild(heart);
+                    }
+                }, 8000);
+            }, 500);
+        }
+
+        function createLoveRain() {
+            const loveRain = document.getElementById('loveRain');
+            const loveSymbols = ['💕', '💖', '💗', '💘', '💝'];
+            setInterval(() => {
+                const drop = document.createElement('div');
+                drop.className = 'love-drop';
+                drop.textContent = loveSymbols[Math.floor(Math.random() * loveSymbols.length)];
+                drop.style.left = Math.random() * 100 + '%';
+                drop.style.animationDelay = Math.random() * 2 + 's';
+                loveRain.appendChild(drop);
+                setTimeout(() => {
+                    if (drop.parentNode) {
+                        drop.parentNode.removeChild(drop);
+                    }
+                }, 6000);
+            }, 800);
+        }
+
+        function createRibbons() {
+            const ribbons = document.getElementById('ribbons');
+            setInterval(() => {
+                const ribbon = document.createElement('div');
+                ribbon.className = 'ribbon';
+                ribbon.style.left = Math.random() * 100 + '%';
+                ribbon.style.animationDelay = Math.random() * 2 + 's';
+                const colors = ['#ff69b4', '#ffd700', '#ff1493', '#00bfff', '#98fb98'];
+                const color1 = colors[Math.floor(Math.random() * colors.length)];
+                const color2 = colors[Math.floor(Math.random() * colors.length)];
+                ribbon.style.background = `linear-gradient(45deg, ${color1}, ${color2})`;
+                ribbons.appendChild(ribbon);
+                setTimeout(() => {
+                    if (ribbon.parentNode) {
+                        ribbon.parentNode.removeChild(ribbon);
+                    }
+                }, 5000);
+            }, 1200);
+        }
+
+        function createBubbles() {
+            const bubbles = document.getElementById('bubbles');
+            setInterval(() => {
+                const bubble = document.createElement('div');
+                bubble.className = 'bubble';
+                bubble.style.left = Math.random() * 100 + '%';
+                bubble.style.width = bubble.style.height = (Math.random() * 40 + 20) + 'px';
+                bubble.style.animationDelay = Math.random() * 2 + 's';
+                bubble.style.animationDuration = (Math.random() * 3 + 5) + 's';
+                bubbles.appendChild(bubble);
+                setTimeout(() => {
+                    if (bubble.parentNode) {
+                        bubble.parentNode.removeChild(bubble);
+                    }
+                }, 8000);
+            }, 1000);
+        }
+
+        function createStars() {
+            const stars = document.getElementById('stars');
+            const starSymbols = ['✨', '⭐', '🌟', '💫', '⭐'];
+            for (let i = 0; i < 15; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.textContent = starSymbols[Math.floor(Math.random() * starSymbols.length)];
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                star.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                stars.appendChild(star);
+            }
+        }
+
+        function initEnvelopeInteraction() {
+            const envelope = document.getElementById('envelope');
+            const openBtn = document.getElementById('openBtn');
+            let isOpened = false;
+            openBtn.addEventListener('click', function() {
+                if (!isOpened) {
+                    envelope.classList.add('opened');
+                    openBtn.textContent = '💌 关闭信封';
+                    isOpened = true;
+                    createCelebration();
+                } else {
+                    envelope.classList.remove('opened');
+                    openBtn.textContent = '💝 打开爱的惊喜';
+                    isOpened = false;
+                }
+            });
+            envelope.addEventListener('dblclick', function() {
+                openBtn.click();
+            });
+        }
+
+        function createCelebration() {
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    createFloatingHeart();
+                }, i * 100);
+            }
+            for (let i = 0; i < 10; i++) {
+                setTimeout(() => {
+                    createConfetti();
+                }, i * 50);
+            }
+        }
+
+        function createFloatingHeart() {
+            const heart = document.createElement('div');
+            heart.textContent = ['💖', '💕', '💗', '💝', '💘'][Math.floor(Math.random() * 5)];
+            heart.style.position = 'fixed';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.top = Math.random() * 100 + '%';
+            heart.style.fontSize = (Math.random() * 20 + 20) + 'px';
+            heart.style.zIndex = '1000';
+            heart.style.pointerEvents = 'none';
+            heart.style.animation = 'heartFloat 3s ease-out forwards';
+            document.body.appendChild(heart);
+            setTimeout(() => {
+                if (heart.parentNode) {
+                    heart.parentNode.removeChild(heart);
+                }
+            }, 3000);
+        }
+
+        function createConfetti() {
+            const confetti = document.createElement('div');
+            confetti.style.position = 'fixed';
+            confetti.style.width = '10px';
+            confetti.style.height = '10px';
+            confetti.style.left = Math.random() * 100 + '%';
+            confetti.style.top = Math.random() * 100 + '%';
+            confetti.style.borderRadius = '50%';
+            const colors = ['#ff69b4', '#ffd700', '#ff1493', '#00bfff', '#98fb98', '#dda0dd'];
+            confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+            confetti.style.zIndex = '1000';
+            confetti.style.pointerEvents = 'none';
+            confetti.style.animation = 'confettiFall 2s ease-out forwards';
+            document.body.appendChild(confetti);
+            setTimeout(() => {
+                if (confetti.parentNode) {
+                    confetti.parentNode.removeChild(confetti);
+                }
+            }, 2000);
+        }
+
+        document.addEventListener('mousemove', function(e) {
+            const envelope = document.getElementById('envelope');
+            const rect = envelope.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            const angleX = (e.clientY - centerY) / 30;
+            const angleY = (centerX - e.clientX) / 30;
+            if (!envelope.classList.contains('opened')) {
+                envelope.style.transform = `rotateX(${angleX}deg) rotateY(${angleY}deg)`;
+            }
+            if (Math.random() < 0.1) {
+                createMouseHeart(e.clientX, e.clientY);
+            }
+        });
+
+        function createMouseHeart(x, y) {
+            const heart = document.createElement('div');
+            heart.textContent = '💕';
+            heart.style.position = 'fixed';
+            heart.style.left = x + 'px';
+            heart.style.top = y + 'px';
+            heart.style.fontSize = '12px';
+            heart.style.zIndex = '999';
+            heart.style.pointerEvents = 'none';
+            heart.style.animation = 'mouseHeartFloat 1.5s ease-out forwards';
+            document.body.appendChild(heart);
+            setTimeout(() => {
+                if (heart.parentNode) {
+                    heart.parentNode.removeChild(heart);
+                }
+            }, 1500);
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.code === 'Space') {
+                e.preventDefault();
+                document.getElementById('openBtn').click();
+            }
+            if (e.code === 'KeyM') {
+                e.preventDefault();
+                document.getElementById('musicBtn').click();
+            }
+            if (e.code === 'Key Mutating self
+KeyL') {
+                e.preventDefault();
+                for (let i = 0; i < 10; i++) {
+                    setTimeout(() => createFloatingHeart(), i * 100);
+                }
+            }
+        });
+
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes confettiFall {
+                0% {
+                    transform: translateY(0) rotate(0deg) scale(1);
+                    opacity: 1;
+                }
+                100% {
+                    transform: translateY(300px) rotate(720deg) scale(0);
+                    opacity: 0;
+                }
+            }
+            @keyframes mouseHeartFloat {
+                0% {
+                    transform: translateY(0) scale(1);
+                    opacity: 1;
+                }
+                100% {
+                    transform: translateY(-50px) scale(0);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        setInterval(() => {
+            if (Math.random() < 0.3) {
+                createFloatingHeart();
+            }
+        }, 2000);
+
+        document.addEventListener('click', function(e) {
+            if (e.target.tagName !== 'BUTTON') {
+                createMouseHeart(e.clientX, e.clientY);
+            }
+        });
+    </script>
+</body>
+</html>
