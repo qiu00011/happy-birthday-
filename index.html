@@ -5,470 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>生日快乐 - 11.22</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        /* ... 其他样式保持不变 ... */
 
         body {
             font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #ffeef5 0%, #ffb3d9 100%);
+            background: url('bg.jpg') center/cover no-repeat fixed, linear-gradient(135deg, #ffeef5 0%, #ffb3d9 100%);
             overflow-x: hidden;
-            background-color: #ffeef5;
         }
 
-        .hearts-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .heart {
-            position: absolute;
-            color: #ff69b4;
-            font-size: 20px;
-            animation: heartFloat 8s infinite linear;
-            opacity: 0.8;
-        }
-
-        @keyframes heartFloat {
-            0% { transform: translateY(100vh) rotate(0deg) scale(0.5); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(-100px) rotate(360deg) scale(1.2); opacity: 0; }
-        }
-
-        .balloons {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            z-index: 100;
-            animation: balloonFloat 4s ease-in-out infinite;
-        }
-
-        .balloon {
-            display: inline-block;
-            margin: 0 5px;
-            font-size: 30px;
-            animation: balloonBounce 2s ease-in-out infinite;
-        }
-
-        .balloon:nth-child(1) { animation-delay: 0s; }
-        .balloon:nth-child(2) { animation-delay: 0.2s; }
-        .balloon:nth-child(3) { animation-delay: 0.4s; }
-        .balloon:nth-child(4) { animation-delay: 0.6s; }
-        .balloon:nth-child(5) { animation-delay: 0.8s; }
-
-        @keyframes balloonFloat {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-
-        @keyframes balloonBounce {
-            0%, 100% { transform: scale(1) rotate(-2deg); }
-            50% { transform: scale(1.1) rotate(2deg); }
-        }
-
-        .balloons-right {
-            position: fixed;
-            top: 20px;
-            right: 100px;
-            z-index: 100;
-            animation: balloonFloat 3s ease-in-out infinite reverse;
-        }
-
-        .stars {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .star {
-            position: absolute;
-            color: #ffd700;
-            font-size: 16px;
-            animation: starTwinkle 3s ease-in-out infinite;
-        }
-
-        @keyframes starTwinkle {
-            0%, 100% { opacity: 0.3; transform: scale(0.8); }
-            50% { opacity: 1; transform: scale(1.2); }
-        }
-
-        .container {
-            position: relative;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            z-index: 2;
-        }
-
-        .upload-control {
-            position: fixed;
-            top: 30px;
-            right: 30px;
-            z-index: 1000;
-            background: linear-gradient(145deg, #ffb3d9, #ff80bf);
-            border-radius: 10px;
-            padding: 15px;
-            backdrop-filter: blur(10px);
-            border: 2px solid rgba(255, 255, 255, 0.5);
-            box-shadow: 0 8px 25px rgba(255, 105, 180, 0.3);
-            transition: all 0.3s ease;
-        }
-
-        .upload-control:hover {
-            transform: scale(1.05);
-        }
-
-        .upload-btn {
-            background: linear-gradient(45deg, #ff69b4, #ff1493);
-            border: none;
-            color: white;
-            padding: 8px 12px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 12px;
-            margin: 5px 0;
-            display: block;
-            width: 100%;
-            text-align: center;
-        }
-
-        .upload-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(255, 20, 147, 0.4);
-        }
-
-        .music-btn {
-            background: linear-gradient(45deg, #ff69b4, #ff1493);
-            border: none;
-            color: white;
-            padding: 8px 12px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 12px;
-            margin: 5px 0;
-            display: block;
-            width: 100%;
-            text-align: center;
-        }
-
-        .music-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(255, 20, 147, 0.4);
-        }
-
-        .envelope-container {
-            perspective: 1000px;
-            width: 420px;
-            height: 320px;
-            margin: 0 auto;
-            position: relative;
-        }
-
-        .envelope {
-            width: 100%;
-            height: 100%;
-            position: relative;
-            transform-style: preserve-3d;
-            transition: all 0.8s ease;
-            filter: drop-shadow(0 15px 30px rgba(255, 105, 180, 0.3));
-        }
-
-        .envelope.opened .envelope-top {
-            transform: rotateX(-180deg);
-        }
-
-        .envelope-body {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #ffeef5 0%, #ffe0eb 50%, #ffd6e8 100%);
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(255, 105, 180, 0.2);
-            border: 3px solid #ffb3d9;
-        }
-
-        .envelope-top {
-            position: absolute;
-            width: 100%;
-            height: 50%;
-            background: linear-gradient(135deg, #ffb3d9 0%, #ff80bf 50%, #ff4da6 100%);
-            border-radius: 12px 12px 0 0;
-            transform-origin: bottom;
-            transition: all 1s ease;
-            z-index: 10;
-            border: 3px solid #ff69b4;
-            border-bottom: none;
-        }
-
-        .envelope-top::before {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
-            height: 0;
-            border-left: 210px solid transparent;
-            border-right: 210px solid transparent;
-            border-top: 100px solid #ff4da6;
-        }
-
-        .envelope-decoration {
-            position: absolute;
-            top: 20%;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 30px;
-            z-index: 15;
-            animation: decorationPulse 2s ease-in-out infinite;
-        }
-
-        @keyframes decorationPulse {
-            0%, 100% { transform: translateX(-50%) scale(1); }
-            50% { transform: translateX(-50%) scale(1.2); }
-        }
-
-        .letter {
-            position: absolute;
-            width: 90%;
-            height: 85%;
-            background: linear-gradient(145deg, #fffbfc 0%, #fff5f8 100%);
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) translateY(20px);
-            border-radius: 10px;
-            padding: 30px;
-            box-shadow: 0 8px 30px rgba(255, 105, 180, 0.2);
-            opacity: 0;
-            transition: all 1s ease;
-            z-index: 5;
-            border: 2px solid #ffe0eb;
-        }
-
-        .envelope.opened .letter {
-            opacity: 1;
-            transform: translate(-50%, -50%) translateY(0);
-        }
-
-        .letter-content {
-            height: 100%;
-            overflow-y: auto;
-            color: #8b4a6b;
-            line-height: 1.8;
-            font-size: 16px;
-        }
-
-        .letter-title {
-            text-align: center;
-            font-size: 26px;
-            font-weight: bold;
-            background: linear-gradient(45deg, #ff69b4, #ff1493, #dc143c);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 20px;
-            text-shadow: 0 2px 4px rgba(255, 105, 180, 0.3);
-        }
-
-        .letter-text {
-            margin-bottom: 15px;
-            text-indent: 2em;
-            background: rgba(255, 240, 245, 0.8);
-            padding: 12px;
-            border-radius: 8px;
-            border-left: 4px solid #ff69b4;
-            box-shadow: 0 2px 8px rgba(255, 105, 180, 0.1);
-        }
-
-        .signature {
-            text-align: right;
-            margin-top: 30px;
-            font-style: italic;
-            color: #ff1493;
-            font-weight: bold;
-            background: rgba(255, 182, 193, 0.2);
-            padding: 10px;
-            border-radius: 8px;
-        }
-
-        .open-btn {
-            position: absolute;
-            bottom: -80px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: linear-gradient(45deg, #ff69b4, #ff1493, #dc143c);
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            border-radius: 50px;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
-            box-shadow: 0 8px 25px rgba(255, 20, 147, 0.4);
-            transition: all 0.3s ease;
-            z-index: 100;
-        }
-
-        .open-btn:hover {
-            transform: translateX(-50%) translateY(-5px) scale(1.1);
-            box-shadow: 0 12px 30px rgba(255, 20, 147, 0.6);
-        }
-
-        .open-btn.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .birthday-title {
-            position: absolute;
-            top: -120px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 48px;
-            font-weight: bold;
-            background: linear-gradient(45deg, #ff69b4, #ff1493, #dc143c, #ffd700);
-            background-size: 400% 400%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: gradientShift 3s ease-in-out infinite;
-            text-shadow: 0 4px 8px rgba(255, 105, 180, 0.3);
-            z-index: 100;
-        }
-
-        @keyframes gradientShift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-
-        .date-decoration {
-            position: absolute;
-            bottom: -150px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 24px;
-            color: #fff;
-            background: linear-gradient(145deg, #ff69b4, #ff1493);
-            padding: 12px 25px;
-            border-radius: 30px;
-            backdrop-filter: blur(10px);
-            border: 2px solid rgba(255, 255, 255, 0.5);
-            box-shadow: 0 8px 25px rgba(255, 20, 147, 0.4);
-        }
-
-        .love-rain {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .love-drop {
-            position: absolute;
-            font-size: 24px;
-            color: #ff69b4;
-            animation: loveRain 6s linear infinite;
-        }
-
-        @keyframes loveRain {
-            0% { transform: translateY(-100px) rotate(0deg); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
-        }
-
-        .ribbons {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .ribbon {
-            position: absolute;
-            width: 6px;
-            height: 80px;
-            background: linear-gradient(45deg, #ff69b4, #ffd700, #ff1493, #00bfff);
-            animation: ribbonFall 5s linear infinite;
-        }
-
-        @keyframes ribbonFall {
-            0% { transform: translateY(-100px) rotate(0deg); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
-        }
-
-        .bubbles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .bubble {
-            position: absolute;
-            background: radial-gradient(circle, rgba(255, 182, 193, 0.6), rgba(255, 105, 180, 0.3));
-            border-radius: 50%;
-            animation: bubbleFloat 8s infinite linear;
-        }
-
-        @keyframes bubbleFloat {
-            0% { transform: translateY(100vh) scale(0); opacity: 0; }
-            10% { opacity: 0.8; }
-            90% { opacity: 0.8; }
-            100% { transform: translateY(-100px) scale(1.5); opacity: 0; }
-        }
-
-        @media (max-width: 768px) {
-            .envelope-container { width: 320px; height: 240px; }
-            .birthday-title { font-size: 32px; top: -100px; }
-            .letter { padding: 20px; }
-            .letter-content { font-size: 14px; }
-            .balloons, .balloons-right { font-size: 20px; }
-        }
-
-        .loading {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #ffeef5 0%, #ffb3d9 100%);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 10000;
-            transition: opacity 0.5s ease;
-        }
-
-        .loading-content { text-align: center; color: #ff1493; }
-        .loading-text { font-size: 24px; font-weight: bold; animation: pulse 2s infinite; margin-bottom: 20px; }
-        .loading-hearts { font-size: 30px; animation: heartBeat 1.5s ease-in-out infinite; }
-        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
-        @keyframes heartBeat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.3); } }
-        .loading.hidden { opacity: 0; pointer-events: none; }
+        /* 移除 upload-control 相关样式，因为不再需要上传按钮 */
     </style>
 </head>
 <body>
@@ -480,6 +25,9 @@
                 <div class="loading-hearts">💖 💝 💗 💖</div>
             </div>
         </div>
+
+        <!-- 移除 upload-control 部分 -->
+        <!-- <div class="upload-control">...</div> -->
 
         <div class="hearts-container" id="heartsContainer"></div>
         <div class="love-rain" id="loveRain"></div>
@@ -495,15 +43,6 @@
             <span class="balloon">💕</span><span class="balloon">🎈</span><span class="balloon">💖</span><span class="balloon">🎈</span>
         </div>
 
-        <div class="upload-control">
-            <input type="file" id="bgImageInput" accept="image/jpeg" style="display: none;">
-            <button class="upload-btn" onclick="document.getElementById('bgImageInput').click()">上传背景图片</button>
-            <input type="file" id="bgMusicInput" accept="audio/mpeg" style="display: none;">
-            <button class="upload-btn" onclick="document.getElementById('bgMusicInput').click()">上传背景音乐</button>
-            <button class="music-btn" id="musicBtn" style="display: none;">🎵 播放音乐</button>
-            <audio id="bgMusic" loop preload="auto"></audio>
-        </div>
-
         <div class="container">
             <div class="envelope-container">
                 <div class="birthday-title">🎂 生日快乐 🎂</div>
@@ -515,43 +54,40 @@
                         <div class="letter-content">
                             <div class="letter-title">💌 致我最亲爱的朋友 💌</div>
                             <div class="letter-text">
-            親愛的阿欣：<br><br>
-            嗨～又是一年11月22日了，今天，是屬於妳的特別日子。先跟妳說聲最重要的：生日快樂🎂！<br><br>
-            這封信，其實我準備了很久，因為我真的很想好好把心裡想說的話全部寫下來。不只是為了祝妳生日快樂，更是想在這個特別的時刻，把這一年來對妳的感謝、思念、關心，以及那些藏在日常裡的小情緒，都一一寫給妳。因為妳值得，妳值得這世界上最溫柔、最長情的祝福。<br><br>
-            認識妳，是我生命裡最珍貴的意外之一。妳的出現，像是一段美麗又動人的旋律，在我心中留下了深深的餘韻。每次想到妳，就像春日午後的陽光照進心裡，有點溫暖、有點懷念，也有點不捨。妳說我是妳人生中的驚喜，但我總笑說，我也可能是驚嚇，妳總是笑得那麼開心，像這一切都值得被記得一輩子。<br><br>
-            但我知道，我們無法永遠停留在這段時光裡。或許未來的人生，還有各自更重要的責任與方向，也許有更多的現實考量，讓我們無法像曾經那樣靠近。也許我們之間這段情誼，本來就是一場美麗但短暫的交會。比起牽掛，我更希望妳能學著放下，慢慢把心收回來一點，重新把重心放回自己的生活。<br><br>
-            阿欣，這一年裡，我知道妳並不總是順利。有的時候妳會覺得很累，有時候會想逃避，有時甚至會懷疑自己是否真的能撐下去。但妳知道嗎？每次看到妳還是咬牙撐著、默默把該做的事完成的樣子，我都好心疼，也好佩服。因為我知道，那不是因為妳不累，而是因為妳真的很堅強。那種內心真正溫柔的人，才會擁有的堅強。<br><br>
-            我真的很希望，妳不要再那麼委屈自己了。妳已經夠好了，真的。妳比很多人都還要努力、還要認真。妳總是顧慮別人的感受，為了不讓別人失望，常常犧牲自己。可是阿欣，妳也是人啊，妳也會累、會痛、會想哭。所以，以後請妳也多為自己想一點，好嗎？妳也值得被照顧、被疼愛、被溫柔以待。<br><br>
-            有時候我會幻想，如果今天我在妳身邊，我會怎麼為妳慶生。也許是一起吃一頓簡單又好吃的晚餐，也許是送妳一束花，也許是我親手做的小蛋糕。然後我們可以在路邊慢慢散步，聊聊這一年來的故事，聽妳說那些藏在心裡卻無法對別人說的話。或者我們什麼都不說，只是並肩走著，也很好。<br><br>
-            但現在，我只能隔著一片海，透過這封信，把這些畫面寫給妳看。妳在大陸，我在台灣，雖然距離遠了一點，但我的心，一直都在妳那邊。每當我想到妳現在在忙些什麼，有沒有好好吃飯、好好睡覺，我都會忍不住默默地為妳祈禱，希望妳一切都好、平安健康。<br><br>
-            妳知道嗎？我一直覺得妳是一道光。不是那種耀眼刺眼的光，而是像黃昏時分斜斜照進房間的那種光，柔柔的、暖暖的、靜靜地陪著人。妳總是用自己的方式，默默地安慰別人、鼓勵別人，不誇耀、不張揚，卻讓人無法忽視。妳的存在，是那樣溫暖、踏實，讓人忍不住想靠近妳一點，再多了解妳一點。<br><br>
-            我知道妳不喜歡成為焦點，總是習慣把別人放在前面，把自己放在最後。但在今天，在妳的生日這一天，我希望妳可以勇敢地把自己放在第一位。好好寵愛自己，好好放鬆一下。買一杯妳喜歡的奶茶，聽一首妳喜歡的歌，或者去一個妳想去的地方。不需要太多理由，因為今天是妳的日子。<br><br>
-            阿欣，我真的希望妳能一直快快樂樂的。不是那種表面上的笑，而是那種從心底自然流露的開心。希望妳能有很多很多這樣的日子，累積成一個閃閃發亮的人生。<br><br>
-            我也想告訴妳，未來不管遇到什麼，都別忘了自己有多棒。妳是值得被愛、被珍惜的。那些妳努力過、撐過來的日子，是妳最閃耀的勳章。就算沒有人發現，妳也要記得自己有多勇敢、多堅強。<br><br>
-            我希望從今天開始，妳可以慢慢放下我，不要再那麼常常想念我了。我們曾經彼此喜歡，是一段真摯又美好的記憶，但它不該成為妳心裡永遠的牽絆。希望妳能把這份愛轉回自己身上，好好疼惜妳自己，好好愛自己。<br><br>
-            有時候我們會懷疑自己，會問：「我這樣夠好嗎？」「我是不是不夠聰明、不夠漂亮、不夠特別？」但其實，那些都不是妳需要去迎合的標準。妳只要活成自己喜歡的樣子，就已經很棒了。這個世界上沒有第二個妳，妳本身就是無可取代的存在。<br><br>
-            最後，我想跟妳說一個願望。這是我每年都會在妳生日這天偷偷許的願望——願妳一生平安、健康、快樂，身邊有人疼、心裡有夢想、眼裡有光。願妳不再為過去難過，也不為未來擔心。願妳不管在哪裡，都能做自己，愛自己。<br><br>
-            阿欣，謝謝妳出現在我的世界裡。雖然我們的故事可能不像電影那樣轟轟烈烈，但卻是真實而溫暖的。未來的日子裡，我會一直在遠方默默祝福妳。<br><br>
-            願我們都能成為更好的人，在各自的生活裡閃閃發光。有一天如果命運讓我們再相遇，希望我們都還記得彼此。<br><br>
-            祝我最親愛的阿欣，生日快樂。<br><br>
-            永遠祝福妳的<br>
-            邱子怡<br>
-            2025年11月22日
-        </div>
-        <div class="letter-text">
-            🌸 愿你的生日充满欢笑与幸福，愿你实现每一个梦想！ 🌸
-        </div>
-        <div class="letter-text">
-            🌺 感谢你一直以来的陪伴，你的笑容是我最大的动力！ 🌺
-        </div>
-        <div class="letter-text">
-            🎀 愿你的每一天都充满阳光与快乐，愿所有美好的事情都围绕在你身边。生日快乐！🎂✨
-        </div>
-        <div class="signature">
-            💖 永远爱你的子怡<br>🌹 2025年11月22日 🌹
-        </div>
-    </div>
-</div>
+                                親愛的阿欣：<br><br>
+                                嗨～又是一年11月22日了，今天，是屬於妳的特別日子。先跟妳說聲最重要的：生日快樂🎂！<br><br>
+                                這封信，其實我準備了很久，因為我真的很想好好把心裡想說的話全部寫下來。不只是為了祝妳生日快樂，更是想在這個特別的時刻，把這一年來對妳的感謝、思念、關心，以及那些藏在日常裡的小情緒，都一一寫給妳。因為妳值得，妳值得這世界上最溫柔、最長情的祝福。<br><br>
+                                認識妳，是我生命裡最珍貴的意外之一。妳的出現，像是一段美麗又動人的旋律，在我心中留下了深深的餘韻。每次想到妳，就像春日午後的陽光照進心裡，有點溫暖、有點懷念，也有點不捨。妳說我是妳人生中的驚喜，但我總笑說，我也可能是驚嚇，妳總是笑得那麼開心，像這一切都值得被記得一輩子。<br><br>
+                                但我知道，我們無法永遠停留在這段時光裡。或許未來的人生，還有各自更重要的責任與方向，也許有更多的現實考量，讓我們無法像曾經那樣靠近。也許我們之間這段情誼，本來就是一場美麗但短暫的交會。比起牽掛，我更希望妳能學著放下，慢慢把心收回來一點，重新把重心放回自己的生活。<br><br>
+                                阿欣，這一年裡，我知道妳並不總是順利。有的時候妳會覺得很累，有時候會想逃避，有時甚至會懷疑自己是否真的能撐下去。但妳知道嗎？每次看到妳還是咬牙撐著、默默把該做的事完成的樣子，我都好心疼，也好佩服。因為我知道，那不是因為妳不累，而是因為妳真的很堅強。那種內心真正溫柔的人，才會擁有的堅強。<br><br>
+                                我真的很希望，妳不要再那麼委屈自己了。妳已經夠好了，真的。妳比很多人都還要努力、還要認真。妳總是顧慮別人的感受，為了不讓別人失望，常常犧牲自己。可是阿欣，妳也是人啊，妳也會累、會痛、會想哭。所以，以後請妳也多為自己想一點，好嗎？妳也值得被照顧、被疼愛、被溫柔以待。<br><br>
+                                有時候我會幻想，如果今天我在妳身邊，我會怎麼為妳慶生。也許是一起吃一頓簡單又好吃的晚餐，也許是送妳一束花，也許是我親手做的小蛋糕。然後我們可以在路邊慢慢散步，聊聊這一年來的故事，聽妳說那些藏在心裡卻無法對別人說的話。或者我們什麼都不說，只是並肩走著，也很好。<br><br>
+                                但現在，我只能隔著一片海，透過這封信，把這些畫面寫給妳看。妳在大陸，我在台灣，雖然距離遠了一點，但我的心，一直都在妳那邊。每當我想到妳現在在忙些什麼，有沒有好好吃飯、好好睡覺，我都會忍不住默默地為妳祈禱，希望妳一切都好、平安健康。<br><br>
+                                妳知道嗎？我一直覺得妳是一道光。不是那種耀眼刺眼的光，而是像黃昏時分斜斜照進房間的那種光，柔柔的、暖暖的、靜靜地陪著人。妳總是用自己的方式，默默地安慰別人、鼓勵別人，不誇耀、不張揚，卻讓人無法忽視。妳的存在，是那樣溫暖、踏實，讓人忍不住想靠近妳一點，再多了解妳一點。<br><br>
+                                我知道妳不喜歡成為焦點，總是習慣把別人放在前面，把自己放在最後。但在今天，在妳的生日這一天，我希望妳可以勇敢地把自己放在第一位。好好寵愛自己，好好放鬆一下。買一杯妳喜歡的奶茶，聽一首妳喜歡的歌，或者去一個妳想去的地方。不需要太多理由，因為今天是妳的日子。<br><br>
+                                阿欣，我真的希望妳能一直快快樂樂的。不是那種表面上的笑，而是那種從心底自然流露的開心。希望妳能有很多很多這樣的日子，累積成一個閃閃發亮的人生。<br><br>
+                                我也想告訴妳，未來不管遇到什麼，都別忘了自己有多棒。妳是值得被愛、被珍惜的。那些妳努力過、撐過來的日子，是妳最閃耀的勳章。就算沒有人發現，妳也要記得自己有多勇敢、多堅強。<br><br>
+                                我希望從今天開始，妳可以慢慢放下我，不要再那麼常常想念我了。我們曾經彼此喜歡，是一段真摯又美好的記憶，但它不該成為妳心裡永遠的牽絆。希望妳能把這份愛轉回自己身上，好好疼惜妳自己，好好愛自己。<br><br>
+                                有時候我們會懷疑自己，會問：「我這樣夠好嗎？」「我是不是不夠聰明、不夠漂亮、不夠特別？」但其實，那些都不是妳需要去迎合的標準。妳只要活成自己喜歡的樣子，就已經很棒了。這個世界上沒有第二個妳，妳本身就是無可取代的存在。<br><br>
+                                最後，我想跟妳說一個願望。這是我每年都會在妳生日這天偷偷許的願望——願妳一生平安、健康、快樂，身邊有人疼、心裡有夢想、眼裡有光。願妳不再為過去難過，也不為未來擔心。願妳不管在哪裡，都能做自己，愛自己。<br><br>
+                                阿欣，謝謝妳出現在我的世界裡。雖然我們的故事可能不像電影那樣轟轟烈烈，但卻是真實而溫暖的。未來的日子裡，我會一直在遠方默默祝福妳。<br><br>
+                                願我們都能成為更好的人，在各自的生活裡閃閃發光。有一天如果命運讓我們再相遇，希望我們都還記得彼此。<br><br>
+                                祝我最親愛的阿欣，生日快樂。<br><br>
+                                永遠祝福妳的<br>
+                                邱子怡<br>
+                                2025年11月22日
+                            </div>
+                            <div class="letter-text">
+                                🌸 愿你的生日充满欢笑与幸福，愿你实现每一个梦想！ 🌸
+                            </div>
+                            <div class="letter-text">
+                                🌺 感谢你一直以来的陪伴，你的笑容是我最大的动力！ 🌺
+                            </div>
+                            <div class="letter-text">
+                                🎀 愿你的每一天都充满阳光与快乐，愿所有美好的事情都围绕在你身边。生日快乐！🎂✨
+                            </div>
+                            <div class="signature">
+                                💖 永远爱你的子怡<br>🌹 2025年11月22日 🌹
                             </div>
                         </div>
                     </div>
@@ -571,6 +107,7 @@
             const uuid = urlParams.get('uuid');
             const countdownDiv = document.getElementById('countdown');
             const mainContent = document.getElementById('mainContent');
+            const bgMusic = document.getElementById('bgMusic');
 
             const isValidAccess = uuid === uuidRequired || now.getTime() >= target.getTime();
 
@@ -612,6 +149,9 @@
         function initializePage() {
             setTimeout(() => {
                 document.getElementById('loading').classList.add('hidden');
+                document.getElementById('bgMusic').play().catch(e => {
+                    console.log('音乐自动播放失败:', e);
+                });
             }, 2500);
             createHearts();
             createLoveRain();
@@ -619,65 +159,6 @@
             createBubbles();
             createStars();
             initEnvelopeInteraction();
-            initFileUploads();
-            initMusicControl();
-        }
-
-        function initFileUploads() {
-            const bgImageInput = document.getElementById('bgImageInput');
-            bgImageInput.addEventListener('change', function(e) {
-                const file = e.target.files[0];
-                if (file && file.type === 'image/jpeg') {
-                    const reader = new FileReader();
-                    reader.onload = function(e) {
-                        document.body.style.background = `url(${e.target.result}) center/cover no-repeat fixed`;
-                        document.body.style.backgroundColor = '#ffeef5';
-                    };
-                    reader.readAsDataURL(file);
-                } else {
-                    alert('请上传有效的 JPG 图片！');
-                }
-            });
-
-            const bgMusicInput = document.getElementById('bgMusicInput');
-            bgMusicInput.addEventListener('change', function(e) {
-                const file = e.target.files[0];
-                if (file && file.type === 'audio/mpeg') {
-                    const reader = new FileReader();
-                    reader.onload = function(e) {
-                        const bgMusic = document.getElementById('bgMusic');
-                        bgMusic.src = e.target.result;
-                        document.getElementById('musicBtn').style.display = 'block';
-                    };
-                    reader.readAsDataURL(file);
-                } else {
-                    alert('请上传有效的 MP3 音频文件！');
-                }
-            });
-        }
-
-        function initMusicControl() {
-            const musicBtn = document.getElementById('musicBtn');
-            const bgMusic = document.getElementById('bgMusic');
-            let isPlaying = false;
-            musicBtn.addEventListener('click', function() {
-                if (isPlaying) {
-                    bgMusic.pause();
-                    musicBtn.textContent = '🎵 播放音乐';
-                    isPlaying = false;
-                } else {
-                    bgMusic.play().catch(e => {
-                        console.log('音乐播放失败:', e);
-                        alert('音乐播放失败，请检查音频文件！');
-                    });
-                    musicBtn.textContent = '⏸️ 暂停音乐';
-                    isPlaying = true;
-                }
-            });
-            bgMusic.addEventListener('ended', function() {
-                musicBtn.textContent = '🎵 播放音乐';
-                isPlaying = false;
-            });
         }
 
         function createHearts() {
@@ -841,7 +322,7 @@
 
         document.addEventListener('keydown', function(e) {
             if (e.code === 'Space') { e.preventDefault(); document.getElementById('openBtn').click(); }
-            if (e.code === 'KeyM') { e.preventDefault(); document.getElementById('musicBtn').click(); }
+            if (e.code === 'KeyM') { e.preventDefault(); document.getElementById('bgMusic').paused ? document.getElementById('bgMusic').play() : document.getElementById('bgMusic').pause(); }
             if (e.code === 'KeyL') { e.preventDefault(); for (let i = 0; i < 10; i++) setTimeout(() => createFloatingHeart(), i * 100); }
         });
 
@@ -864,5 +345,6 @@
             if (e.target.tagName !== 'BUTTON') createMouseHeart(e.clientX, e.clientY);
         });
     </script>
+    <audio id="bgMusic" src="bgmusic.mp3" loop preload="auto"></audio>
 </body>
 </html>
