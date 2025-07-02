@@ -22,7 +22,7 @@
         }
 
         .has-bg2 body {
-            background: url('bg2.jpg') center/cover no-repeat fixed, linear-gradient(135deg, #ffeef5 0%, #ffb3d9 100%);
+            background: url('bg2.jpg') center/cover no-repeat fixed, linear-gradient(135deg, #ffeef5 0%, #ffb3d9 100%) !important;
         }
 
         .hearts-container, .love-rain, .ribbons, .bubbles, .stars {
@@ -483,11 +483,14 @@
             const urlParams = new URLSearchParams(window.location.search);
             const uuid = urlParams.get('uuid');
             const mainContent = document.getElementById('mainContent');
+            console.log('Current Time:', now, 'Target Time:', target, 'UUID:', uuid);
 
             const isValidAccess = uuid === uuidRequired || now.getTime() >= target.getTime();
+            console.log('Is Valid Access:', isValidAccess);
 
             if (isValidAccess) {
                 mainContent.classList.add('has-bg2');
+                console.log('Added has-bg2 class');
             }
 
             const countdownDiv = document.getElementById('countdown');
@@ -504,6 +507,7 @@
                         countdownDiv.style.display = 'none';
                         mainContent.style.display = 'block';
                         mainContent.classList.add('has-bg2');
+                        console.log('Countdown ended, added has-bg2');
                         initializePage();
                         return;
                     }
@@ -649,7 +653,7 @@
             heart.style.top = Math.random() * 100 + '%';
             heart.style.fontSize = (Math.random() * 20 + 20) + 'px';
             heart.style.zIndex = '1000';
-            heart.style.pointerEvents = 'none';
+            heart.style.pointer-events = 'none';
             heart.style.animation = 'heartFloat 3s ease-out forwards';
             document.body.appendChild(heart);
             setTimeout(() => { if (heart.parentNode) heart.parentNode.removeChild(heart); }, 3000);
