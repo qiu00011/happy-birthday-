@@ -564,7 +564,7 @@
             <div class="star-animation-container">
                 <div class="shooting-stars" id="shootingStars"></div>
                 <div class="constellation-stars" id="constellationStars"></div>
-                <div class="libra-text" id="libraText">♎ 耶,成功点亮第20颗🌟</div>
+                <div class="libra-text" id="libraText">♏ 耶,成功点亮第20颗🌟</div>
                 <div class="libra-subtitle" id="libraSubtitle">㊙️ 神秘礼物加载中...😉</div>
             </div>
         </div>
@@ -661,7 +661,7 @@
 妳总是顾虑别人的感受,<br>
 为了不让别人失望,<br>
 常常牺牲自己。<br>
-可是阿欣,妳也是自己的小孩啊,<br>
+可是阿欣,妳也是人啊,<br>
 妳也会累、会痛、会想哭。<br>
 所以,以后请妳也多为自己想一点,好吗?<br>
 妳也值得被照顾、被疼爱、被温柔以待。<br>
@@ -681,7 +681,7 @@
 <br>
 但现在,我只能隔着一片海,<br>
 透过这封信,把这些画面写给妳看。<br>
-见字如面,<br>
+嘻嘻,<br>
 虽然距离远了一点,<br>
 但我的心一直都在妳那边。<br>
 每当我想到妳现在在忙些什么,<br>
@@ -799,7 +799,7 @@
 
     <script>
         (function() {
-            const uuidRequired = 'IloveTANGXIN';
+            const uuidRequired = '74520';
             const now = new Date();
             const target = new Date('2025-12-10T00:00:00+08:00');
             const urlParams = new URLSearchParams(window.location.search);
@@ -821,15 +821,15 @@
                     const minutes = Math.floor((remaining / (1000 * 60)) % 60);
                     const seconds = Math.floor((remaining / 1000) % 60);
                     countdownDiv.innerHTML = `<div style="height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;background:linear-gradient(135deg, #ffeef5 0%, #ffb3d9 100%);padding:20px;">
-    <div style="font-size:36px;margin-bottom:30px;color:#ff1493;">🎁 距离神秘礼物开启还有 🗓️</div>
+    <div style="font-size:36px;margin-bottom:30px;color:#ff1493;">🎁 距离惊喜开启还有 🎁</div>
     <div style="font-size:48px;font-weight:bold;color:#dc143c;margin-bottom:20px;text-shadow:0 4px 8px rgba(220,20,60,0.3);">
         <span style="display:inline-block;background:linear-gradient(145deg,#fff,#ffe0eb);padding:15px 25px;border-radius:15px;margin:0 10px;box-shadow:0 5px 15px rgba(255,105,180,0.3);">${days}</span> 天
         <span style="display:inline-block;background:linear-gradient(145deg,#fff,#ffe0eb);padding:15px 25px;border-radius:15px;margin:0 10px;box-shadow:0 5px 15px rgba(255,105,180,0.3);">${hours.toString().padStart(2,'0')}</span> 时
         <span style="display:inline-block;background:linear-gradient(145deg,#fff,#ffe0eb);padding:15px 25px;border-radius:15px;margin:0 10px;box-shadow:0 5px 15px rgba(255,105,180,0.3);">${minutes.toString().padStart(2,'0')}</span> 分
         <span style="display:inline-block;background:linear-gradient(145deg,#fff,#ffe0eb);padding:15px 25px;border-radius:15px;margin:0 10px;box-shadow:0 5px 15px rgba(255,105,180,0.3);">${seconds.toString().padStart(2,'0')}</span> 秒
     </div>
-    <div style="font-size:20px;color:#ff69b4;margin-top:20px;">敬请期待~💝</div>
-    <div style="font-size:18px;color:#ff69b4;margin-top:10px;">😗😙</div>
+    <div style="font-size:20px;color:#ff69b4;margin-top:20px;">仅限指定访客查看 💝</div>
+    <div style="font-size:18px;color:#ff69b4;margin-top:10px;">请稍后再来或使用专属链接哦~</div>
 </div>`;
                 }
                 updateLockedCountdown();
@@ -902,26 +902,44 @@
         function createConstellationAnimation() {
             const container = document.getElementById('constellationStars');
             
-            // 天秤座星座位置 (20颗星)
-            const libraStars = [
-                {x: 150, y: 80}, {x: 180, y: 100}, {x: 210, y: 90},
-                {x: 240, y: 110}, {x: 270, y: 100}, {x: 300, y: 120},
-                {x: 330, y: 110}, {x: 360, y: 130}, {x: 390, y: 120},
-                {x: 420, y: 140}, {x: 450, y: 130},
-                {x: 200, y: 200}, {x: 250, y: 220}, {x: 300, y: 200},
-                {x: 350, y: 220}, {x: 400, y: 200},
-                {x: 250, y: 280}, {x: 300, y: 300}, {x: 350, y: 280}, {x: 400, y: 300}
+            // 天蝎座星座位置 (20颗星) - 呈现蝎子形状
+            const scorpioStars = [
+                // 蝎子头部
+                {x: 200, y: 80}, {x: 240, y: 90}, {x: 280, y: 85},
+                // 身体主干
+                {x: 220, y: 130}, {x: 260, y: 140}, {x: 300, y: 135},
+                {x: 340, y: 145}, {x: 380, y: 155},
+                // 蝎子尾巴弯曲部分
+                {x: 420, y: 170}, {x: 450, y: 195}, {x: 470, y: 230},
+                {x: 480, y: 270}, {x: 475, y: 310},
+                // 蝎子的钳子（左侧）
+                {x: 160, y: 120}, {x: 130, y: 150}, {x: 110, y: 180},
+                // 蝎子的钳子（右侧）
+                {x: 320, y: 110}, {x: 350, y: 100}, {x: 380, y: 95},
+                // 尾刺
+                {x: 460, y: 340}
             ];
 
-            // 连线定义
+            // 连线定义 - 形成蝎子形状
             const connections = [
-                [0,1], [1,2], [2,3], [3,4], [4,5], [5,6], [6,7], [7,8], [8,9], [9,10],
-                [3,11], [5,12], [7,13], [9,14], [10,15],
-                [11,16], [12,17], [13,18], [14,19]
+                // 头部连接
+                [0,1], [1,2],
+                // 头部到身体
+                [1,3], [2,4],
+                // 身体主干
+                [3,4], [4,5], [5,6], [6,7],
+                // 尾巴
+                [7,8], [8,9], [9,10], [10,11], [11,12],
+                // 尾刺
+                [12,19],
+                // 左钳
+                [3,13], [13,14], [14,15],
+                // 右钳
+                [5,16], [16,17], [17,18]
             ];
 
             // 创建星星元素
-            libraStars.forEach((pos, index) => {
+            scorpioStars.forEach((pos, index) => {
                 const star = document.createElement('div');
                 star.className = 'constellation-star';
                 star.style.left = pos.x + 'px';
@@ -931,7 +949,7 @@
             });
 
             // 依次点亮星星
-            libraStars.forEach((pos, index) => {
+            scorpioStars.forEach((pos, index) => {
                 setTimeout(() => {
                     const star = container.querySelector(`[data-index="${index}"]`);
                     star.classList.add('lit');
@@ -940,7 +958,7 @@
                     if (index > 0) {
                         connections.forEach(conn => {
                             if (conn[1] === index) {
-                                drawLine(container, libraStars[conn[0]], libraStars[conn[1]]);
+                                drawLine(container, scorpioStars[conn[0]], scorpioStars[conn[1]]);
                             }
                         });
                     }
@@ -950,12 +968,12 @@
             // 所有星星点亮后显示文字
             setTimeout(() => {
                 document.getElementById('libraText').classList.add('show');
-            }, 2000 + libraStars.length * 200 + 500);
+            }, 2000 + scorpioStars.length * 200 + 500);
 
             // 显示副标题
             setTimeout(() => {
                 document.getElementById('libraSubtitle').classList.add('show');
-            }, 2000 + libraStars.length * 200 + 1500);
+            }, 2000 + scorpioStars.length * 200 + 1500);
         }
 
         function drawLine(container, start, end) {
@@ -1195,4 +1213,3 @@
     </script>
 </body>
 </html>
-
